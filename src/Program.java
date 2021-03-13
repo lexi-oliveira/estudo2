@@ -209,7 +209,7 @@ static void addVerticeAdjacente(ArrayList <List<Integer>> listaAdjacencias, int 
 			}
 			
 			
-			
+			/*
 			System.out.println("\nAbertos: ");
 			for(int i = 0; i <g.numVertices; i ++) {
 				System.out.print((i+1) + ":" + abertos[i] + " ");
@@ -221,6 +221,7 @@ static void addVerticeAdjacente(ArrayList <List<Integer>> listaAdjacencias, int 
 			for(int i = 0; i <g.numVertices; i ++) {
 				System.out.print((i+1) + ":" + fechados[i] + " ");
 			}
+			*/
 		}
 		
 		System.out.println();
@@ -236,7 +237,23 @@ static void addVerticeAdjacente(ArrayList <List<Integer>> listaAdjacencias, int 
 		for(int i = 0; i <g.numVertices; i ++) {
 			System.out.print("  " + (antecessores[i]) + "  |");
 		}
-		
+		System.out.println();
+		for(int i = 0; i <g.numVertices; i ++) {
+			if(distancias[i]!=0 && distancias[i]!= 2147483647) {
+				System.out.print((i+1) + " ");
+				System.out.print("(" + distancias[i] + ") :");
+				System.out.print(" " + verticeInicial);
+				if(antecessores[i] != verticeInicial)
+					System.out.print(" " + antecessores[i]);
+				int j = i;
+				//while (antecessores[antecessores[j]-1] != verticeInicial)
+				while (antecessores[antecessores[j]-1] != verticeInicial) {
+					System.out.print(" " + antecessores[antecessores[j]-1]);
+					j--;
+				}
+				System.out.println(" " + (i+1));
+			}
+		}
 	}
 	
 	static boolean todosFechados(boolean[] fechados) {
@@ -278,5 +295,3 @@ static void addVerticeAdjacente(ArrayList <List<Integer>> listaAdjacencias, int 
 	}
 	
 }
-
-
